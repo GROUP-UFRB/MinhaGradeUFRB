@@ -9,40 +9,44 @@ class People():
     def primary_key(self, people_id):
         return people_id
 
-class Student(People):
+class Student():
     
-    student_id: char #stdent register
-    course_id: Course #A student can have only one course at time
+    register: char #stdent register
     score: float
-    def primary_key(self, student_id):
-        return student_id
+    active: int
+    init_semester: char
+    course_id: Course #Registered Relatioship: A student can have only one course at time
+    people_id: People #CanBe Relatioship
+    def primary_key(self, register):
+        return register
 
 class Center():
 
-    center_id : char
+    cod_center : char
     name : char
 
-    def primary_key(self, center_id):
-        return center_id
+    def primary_key(self, cod_center):
+        return cod_center
 
 class Subject():
     subject_id : char
-
+    weight: float
     name : char
-    center_id : Center
     workload: int
+    cod_center : Center #From relatioship
 
     def primary_key(self, subject_id):
         return subject_id
 
 class Course():
-    course_id: char
+    cod_course: char
     name: char
     workload_S_required: int
     workload_S_optional: int
+    cod_center: Center #From relatioship
 
-    def primary_key(self, course_id):
-        return course_id
+    def primary_key(self, cod_course):
+        return cod_course
 
 class Error():
 
@@ -50,7 +54,7 @@ class Error():
     msg: text
     title: char
     date: date
-    people_id: People
+    people_id: People #Notify relatioship
 
     def primary_key(self, error_id):
         return error_id
@@ -61,54 +65,44 @@ class Error():
 
 class ComplementActivity():
 
-    id_complement: char
     title: char
     type_activity: char
     value: float
     unit: char
-    qtd_max: int #all complementary activities have a max quantity
+    register: Student #Have relatioship
 
-    def primary_key(self, id_complement):
-        return id_complement
-
-class CompltActivityStudent():
-
-    id_student: Student
-    id_complement: ComplementActivity
-    
-    def primary_key(self, id_student, id_complement):
-        return id_student, id_complement
-
+    def primary_key(self, title, register):
+        return title, register
 
 class CourseRequireSubject():
-    #one course have many subjects
-    course_id : Course
-    subject_id: Subject
-    optional: bool
-    weight: int
-
-    def primary_key(self, course_id, subject_id):
-        return course_id, subject_id
-
+    
+    semeter: char
+    optional: int
+    cod_course : Course #A Course require N subjects
+    subject_id: Subject #A Subject can be required by N Courses
+    weight: float
+    def primary_key(self, cod_course, subject_id):
+        return cod_course, subject_id
 
 class SubjectStudent():
-    subject_id : Subject #the discipline of the student
-    student_id: Student #the student
     status: char #approved, disapproved, registered or locked
     score: float
     semester: char
+    subject_id : Subject #Subject can have N Students registered
+    register: Student #Student can be registered in N Subjects
 
-    def primary_key(self, subject_id, student_id): 
-        return subject_id, student_id
+    def primary_key(self, subject_id, register): 
+        return subject_id, register
 
-    def foreign_key(self, subject_id, student_id) -> Reference(Subject, Student) :
-        return subject_id, student_id
+    def foreign_key(self, subject_id, register) -> Reference(Subject, Student) :
+        return subject_id, register
 
 class SubjectRequireSubject():
 
-    subject_id : Subject
-    require_s_id: Subject
-    course_id: Course
+    subject_id : Subject #Subject require N CourseRequireSubjects
+    require_s_id: CourseRequireSubject #CourseRequireSubject can be required by N subjects
+    course_id: CourseRequireSubject #CourseRequireSubject can be required by N subjects
 
-    def primary_key(self, subject_id, require_s_id):
-        return subject_id, require_s_id
+    def primary_key(self, subject_id, require_s_id, course_id):
+        return subject_id, require_s_id, course_id
+
