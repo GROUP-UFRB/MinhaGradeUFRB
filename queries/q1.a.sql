@@ -28,7 +28,7 @@ workload_required as (
             and s_s.status          = "approved" /* limit to get only completed subjects */
 )
 
-select sum(wopt.workload)/(c.workload_S_optional) as ratio_optional, sum(wopt.workload)/(c.workload_S_required) as ratio_required
+select wopt.workload/(c.workload_S_optional) as ratio_optional, wrqd.workload/(c.workload_S_required) as ratio_required
 
     from workload_optional wopt, workload_required wrqd, minhagrade.Course c, minhagrade.Student s
 
