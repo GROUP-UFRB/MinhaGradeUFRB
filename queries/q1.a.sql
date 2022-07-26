@@ -1,5 +1,5 @@
 /*Query: "Qual a porcentagem de carga horária executada para o aluno em relação ao total?" */
-/*TODO assert we have register: to specific student */
+/*TODO assert we have student_id: to specific student */
 
 with workload_optional as (
     select sum(sub.workload) as wld_opt
