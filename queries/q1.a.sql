@@ -13,9 +13,8 @@ with workload_optional as (
             and sub.subject_id      = c_r_s.subject_id /* limit to only optional subjects */
             and s_s.subject_id      = sub.subject_id /* get information about the situation of this student with this subject */
             and s_s.status          = "approved" /* limit to get only completed subjects */
-)
-
-with workload_required as (
+),
+workload_required as (
     select sum(sub.workload) as wld_rqd
         from minhagrade.CourseRequireSubject c_r_s, minhagrade.Student s, 
         minhagrade.Subject sub, minhagrade.SubjectStudent s_s
@@ -29,7 +28,7 @@ with workload_required as (
             and s_s.status          = "approved" /* limit to get only completed subjects */
 )
 
-select sum(wopt.workload)/(c.workload_S_optional) as ratio_optional, sum(wopt.workload)/(c.workload_S_optional) as ratio_required
+select sum(wopt.workload)/(c.workload_S_optional) as ratio_optional, sum(wopt.workload)/(c.workload_S_required) as ratio_required
 
     from workload_optional wopt, workload_required wrqd, minhagrade.Course c, minhagrade.Student s
 
