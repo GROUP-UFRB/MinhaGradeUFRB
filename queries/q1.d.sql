@@ -11,6 +11,6 @@ select sum(c.value) / c.workload_s_complement as ratio_cplt_actvty
     minhagrade.Course c
     
     where
-        s.register          = register
-        and ca.register     = register
+        s.student_id        = student_id
+        and ca.student_id   = student_id
         and c.cod_course    = s.course_id

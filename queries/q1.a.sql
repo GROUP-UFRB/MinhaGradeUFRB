@@ -7,7 +7,7 @@ with workload_optional as (
         minhagrade.Subject sub, minhagrade.SubjectStudent s_s
 
         where 
-            s.register              = register
+            s.student_id            = student_id
             and c_r_s.cod_course    = s.course_id /* get all subject of this course */
             and c_r_s.optional      = true
             and sub.subject_id      = c_r_s.subject_id /* limit to only optional subjects */
@@ -20,7 +20,7 @@ workload_required as (
         minhagrade.Subject sub, minhagrade.SubjectStudent s_s
 
         where 
-            s.register              = register
+            s.stduent_id            = student_id
             and c_r_s.cod_course    = s.course_id /* get all subject of this course */
             and c_r_s.optional      = false
             and sub.subject_id      = c_r_s.subject_id /* limit to only optional subjects */
@@ -33,7 +33,7 @@ select wopt.workload/(c.workload_S_optional) as ratio_optional, wrqd.workload/(c
     from workload_optional wopt, workload_required wrqd, minhagrade.Course c, minhagrade.Student s
 
     where
-        s.register   = register 
+        s.student_id = student_id 
         c.cod_course = s.course_id
         
 
