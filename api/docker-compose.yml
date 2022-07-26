@@ -2,7 +2,9 @@ version: "3"
 
 services:
   dev:
-    build: ./Dockerfiles
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/Dockerfile
     container_name: minha_grade
     depends_on:
       - db

@@ -9,7 +9,6 @@ RUN yarn install
 COPY . .
 
 RUN yarn prisma generate
-RUN yarn prisma generate --schema ./prisma/izzistrit.prisma
 
 EXPOSE 3000
 
