@@ -1,0 +1,135 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Error {
+    error_id  Int      @id @default(autoincrement())
+    msg       String
+    title     String
+    date      DateTime @default(now())
+    people_id Int
+
+    people People @relation(fields: [people_id], references: [people_id])
+}
+
+model People {
+    people_id Int    @id @default(autoincrement())
+    name      String @db.VarChar(100)
+    email     String @unique @db.VarChar(100)
+    password  String
+
+    students Student[]
+    errors   Error[]
+}
+
+model Student {
+    student_id    Int     @id @default(autoincrement())
+    register      String
+    score         Float?
+    active        Boolean @default(false)
+    init_semester String
+
+    people_id           Int
+    course_id           Int
+    complement_activity ComplementActivity[]
+    subjects            SubjectStudent[]
+
+    people People @relation(fields: [people_id], references: [people_id])
+    course Course @relation(fields: [course_id], references: [course_id])
+}
+
+model Center {
+    center_id  Int    @id @default(autoincrement())
+    cod_center String @unique @db.VarChar(10)
+    name       String @db.VarChar(100)
+
+    courses  Course[]
+    subjects Subject[]
+}
+
+model Course {
+    course_id           Int    @unique @default(autoincrement())
+    cod_course          String @unique
+    name                String
+    workload_S_required Float  @default(0)
+    workload_S_optional Float  @default(0)
+
+    students               Student[]
+    course_require_subject CourseRequireSubject[]
+    cod_center             String
+
+    center Center @relation(fields: [cod_center], references: [cod_center])
+
+    @@id([course_id, cod_course])
+}
+
+model Subject {
+    subject_id Int    @id @default(autoincrement())
+    weight     Float  @default(0)
+    name       String
+    workload   Float  @default(0)
+
+    cod_center Int
+    students   SubjectStudent[]
+    requested  CourseRequireSubject[]
+    unlock     SubjectRequireSubject[]
+
+    center Center @relation(fields: [cod_center], references: [center_id])
+}
+
+model ComplementActivity {
+    complement_activity_id Int    @id @default(autoincrement())
+    title                  String
+    type_activity          String
+    value                  Float
+    unit                   String
+    student_id             Int
+
+    student Student @relation(fields: [student_id], references: [student_id])
+}
+
+model CourseRequireSubject {
+    course_require_subject_id Int     @id @default(autoincrement())
+    semeter                   String
+    optional                  Boolean
+    weight                    Int
+
+    cod_course   String
+    subject_id   Int
+    requirements SubjectRequireSubject[]
+
+    course  Course  @relation(fields: [cod_course], references: [cod_course])
+    subject Subject @relation(fields: [subject_id], references: [subject_id])
+}
+
+model SubjectStudent {
+    complement_activity_id Int     @id @default(autoincrement())
+    status                 Boolean
+    score                  Float
+    semester               String  @db.VarChar(6)
+
+    subject_id Int
+    student_id Int
+
+    subject Subject @relation(fields: [subject_id], references: [subject_id])
+    student Student @relation(fields: [student_id], references: [student_id])
+}
+
+model SubjectRequireSubject {
+    complement_activity_id Int @id @default(autoincrement())
+
+    subject_id   Int
+    require_s_id Int
+    course_id    Int
+
+    subject Subject              @relation(fields: [subject_id], references: [subject_id])
+    require CourseRequireSubject @relation(fields: [require_s_id], references: [course_require_subject_id])
+}
