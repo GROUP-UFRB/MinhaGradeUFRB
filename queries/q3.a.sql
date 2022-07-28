@@ -14,4 +14,4 @@ select sub.subject_id, sub.name, sub.cod_center, sub.weight, sub.workload
             s.student_id        = student_id
             and c_r_s.course_id = s.course_id
             and sub.subject_id  = c_r_s.subject_id
-            and sub.sub_weight  = max(sub.weight)
+            and c_r_s.sub_weight  = max(sub.weight)
