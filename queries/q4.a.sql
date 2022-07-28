@@ -17,6 +17,6 @@ select sub.subject_id, sub.name, sub.cod_center, sub.weight, sub.workload
             and s_s.status      = "Approved"
             and sub.subject_id != s_s.subject_id
             
-    order by sub.weight
+    order by sub.weight, c_r_s.semester
 
     limit x
