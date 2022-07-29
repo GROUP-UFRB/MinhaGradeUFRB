@@ -14,7 +14,7 @@ with workload_optional as (
             and c_r_s.optional      = true
             and sub.subject_id      = c_r_s.subject_id /* limit to only optional subjects */
             and s_s.subject_id      = sub.subject_id /* get information about the situation of this student with this subject */
-            and s_s.status          = "approved" /* limit to get only completed subjects */
+            and s_s.status          = "Approved" /* limit to get only completed subjects */
             and s_s.semester        = semester /* specific semester */ 
 ),
 workload_required as (
@@ -28,7 +28,7 @@ workload_required as (
             and c_r_s.optional      = false
             and sub.subject_id      = c_r_s.subject_id /* limit to only optional subjects */
             and s_s.subject_id      = sub.subject_id /* get information about the situation of this student with this subject */
-            and s_s.status          = "approved" /* limit to get only completed subjects */
+            and s_s.status          = "Approved" /* limit to get only completed subjects */
             and s_s.semester        = semester /* specific semester */ 
 )
 
