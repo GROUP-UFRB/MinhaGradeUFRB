@@ -1,0 +1,584 @@
+{
+  "data": [
+    {
+      "cod": "CCA283",
+      "name": "Metodologia da Pesquisa",
+      "mod": "Básica",
+      "semester": "1°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET146",
+      "name": "Cálculo Diferencial e Integral I",
+      "mod": "Básica",
+      "semester": "1°",
+      "ch_s": 85,
+      "ch_t": 85,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET095",
+      "name": "Física Geral e Experimental I",
+      "mod": "Básica",
+      "semester": "1°",
+      "ch_s": 68,
+      "ch_t": 85,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET061",
+      "name": "Geometria Analítica",
+      "mod": "Básica",
+      "semester": "1°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET150",
+      "name": "Processamento de Dados I",
+      "mod": "Básica",
+      "semester": "1°",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET066",
+      "name": "Química Geral",
+      "mod": "Básica",
+      "semester": "1°",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CCA310",
+      "name": "Etica e Sustentabilidade",
+      "mod": "Básica",
+      "semester": "2°",
+      "ch_s": 34,
+      "ch_t": 34,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CCA235",
+      "name": "Fundamentos da Filosofia",
+      "mod": "Básica",
+      "semester": "2°",
+      "ch_s": 34,
+      "ch_t": 64,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET147",
+      "name": "Cálculo Diferencial e Integral II",
+      "mod": "Básica",
+      "semester": "2°",
+      "ch_s": 85,
+      "ch_t": 85,
+      "req": "Cálculo Diferencial e Integral I",
+      "req_codes": ["CET146"]
+    },
+    {
+      "cod": "CET099",
+      "name": "Física Geral e Experimental II",
+      "mod": "Básica",
+      "semester": "2°",
+      "ch_s": 68,
+      "ch_t": 85,
+      "req": "Física Geral e Experimental I",
+      "req_codes": ["CET095"]
+    },
+    {
+      "cod": "CET151",
+      "name": "Processamento de Dados II",
+      "mod": "Básica",
+      "semester": "2°",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Processamento de Dados I",
+      "req_codes": ["CET150"]
+    },
+    {
+      "cod": "CET065",
+      "name": "Álgebra Linear",
+      "mod": "Básica",
+      "semester": "2°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Geometria Analítica",
+      "req_codes": ["CET061"]
+    },
+    {
+      "cod": "CET148",
+      "name": "Cálculo Diferencial e Integral III",
+      "mod": "Básica",
+      "semester": "3°",
+      "ch_s": 85,
+      "ch_t": 85,
+      "req": "Cálculo Diferencial e Integral II",
+      "req_codes": ["CET147"]
+    },
+    {
+      "cod": "CET102",
+      "name": "Física Geral e Experimental III",
+      "mod": "Básica",
+      "semester": "3°",
+      "ch_s": 68,
+      "ch_t": 85,
+      "req": "Física Geral e Experimental II",
+      "req_codes": ["CET099"]
+    },
+    {
+      "cod": "CET060",
+      "name": "Métodos Estatísticos",
+      "mod": "Básica",
+      "semester": "3°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Cálculo Diferencial e Integral II",
+      "req_codes": ["CET147"]
+    },
+    {
+      "cod": "CET059",
+      "name": "Cálculo Numérico I",
+      "mod": "Básica",
+      "semester": "3°",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Cálculo Diferencial e Integral II, Processamento de Dados II, Álgebra Linear",
+      "req_codes": ["CET147", "CET151", "CET065"]
+    },
+    {
+      "cod": "CET025",
+      "name": "Desenho Técnico I",
+      "mod": "Básica",
+      "semester": "3°",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET236",
+      "name": "Princípios de Orientação a Objetos",
+      "mod": "Profissional",
+      "semester": "3º",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Processamento de Dados II",
+      "req_codes": ["CET151"]
+    },
+    {
+      "cod": "CET149",
+      "name": "Cálculo Diferencial e Integral IV",
+      "mod": "Básica",
+      "semester": "4°",
+      "ch_s": 85,
+      "ch_t": 85,
+      "req": "Cálculo Diferencial e Integral III",
+      "req_codes": ["CET148"]
+    },
+    {
+      "cod": "CET106",
+      "name": "Física Geral e Experimental IV",
+      "mod": "Básica",
+      "semester": "4°",
+      "ch_s": 68,
+      "ch_t": 85,
+      "req": "Física Geral e Experimental III",
+      "req_codes": ["CET102"]
+    },
+    {
+      "cod": "CET100",
+      "name": "Mecânica dos Sólidos I",
+      "mod": "Básica",
+      "semester": "4°",
+      "ch_s": 51,
+      "ch_t": 85,
+      "req": "Cálculo Diferencial e Integral II, Física Geral e Experimental I",
+      "req_codes": ["CET147", "CET095"]
+    },
+    {
+      "cod": "CET103",
+      "name": "Fenômenos de Transporte",
+      "mod": "Básica",
+      "semester": "4°",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Cálculo Diferencial e Integral II, Física Geral e Experimental II",
+      "req_codes": ["CET147", "CET099"]
+    },
+    {
+      "cod": "CET224",
+      "name": "Estruturas de Dados",
+      "mod": "Profissional",
+      "semester": "4°",
+      "ch_s": 85,
+      "ch_t": 85,
+      "req": "Processamento de Dados II",
+      "req_codes": ["CET151"]
+    },
+    {
+      "cod": "CET225",
+      "name": "Circuitos Digitais I",
+      "mod": "Profissional",
+      "semester": "4°",
+      "ch_s": 51,
+      "ch_t": 85,
+      "req": "Processamento de Dados I",
+      "req_codes": ["CET150"]
+    },
+    {
+      "cod": "CET104",
+      "name": "Mecânica dos Sólidos II",
+      "mod": "Básica",
+      "semester": "5°",
+      "ch_s": 51,
+      "ch_t": 85,
+      "req": "Mecânica dos Sólidos I",
+      "req_codes": ["CET100"]
+    },
+    {
+      "cod": "CET028",
+      "name": "Eletricidade",
+      "mod": "Básica",
+      "semester": "5°",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Física Geral e Experimental III",
+      "req_codes": ["CET102"]
+    },
+    {
+      "cod": "CET231",
+      "name": "Circuitos Digitais II",
+      "mod": "Profissional",
+      "semester": "5°",
+      "ch_s": 34,
+      "ch_t": 68,
+      "req": "Circuitos Digitais I",
+      "req_codes": ["CET225"]
+    },
+    {
+      "cod": "CET235",
+      "name": "Organização e Arquitetura de Computadores I",
+      "mod": "Profissional",
+      "semester": "5°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Circuitos Digitais I",
+      "req_codes": ["CET225"]
+    },
+    {
+      "cod": "CET519",
+      "name": "Lógica para Computação",
+      "mod": "Profissional",
+      "semester": "5°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Processamento de Dados II",
+      "req_codes": ["CET151"]
+    },
+    {
+      "cod": "CET166",
+      "name": "Dinâmica dos Sólidos",
+      "mod": "Básica",
+      "semester": "6°",
+      "ch_s": 85,
+      "ch_t": 85,
+      "req": "Física Geral e Experimental I",
+      "req_codes": ["CET095"]
+    },
+    {
+      "cod": "CET168",
+      "name": "Termodinâmica",
+      "mod": "Básica",
+      "semester": "6°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Fenômenos de Transporte",
+      "req_codes": ["CET103"]
+    },
+    {
+      "cod": "CET169",
+      "name": "Eletromagnetismo I",
+      "mod": "Profissional",
+      "semester": "6°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Física Geral e Experimental IV",
+      "req_codes": ["CET106"]
+    },
+    {
+      "cod": "CET171",
+      "name": "Transferência de Calor e Massa",
+      "mod": "Profissional",
+      "semester": "6°",
+      "ch_s": "68",
+      "ch_t": 68,
+      "req": "Fenômenos de Transporte",
+      "req_codes": ["CET103"]
+    },
+    {
+      "cod": "CET509",
+      "name": "Sinais e Sistemas",
+      "mod": "Básica",
+      "semester": "6°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Cálculo Diferencial e Integral III",
+      "req_codes": ["CET148"]
+    },
+    {
+      "cod": "CET226",
+      "name": "Circuitos Elétricos I",
+      "mod": "Profissional",
+      "semester": "6°",
+      "ch_s": 51,
+      "ch_t": 85,
+      "req": "Física Geral e Experimental III",
+      "req_codes": ["CET102"]
+    },
+    {
+      "cod": "CET512",
+      "name": "Engenharia de Software I",
+      "mod": "Profissional",
+      "semester": "7°",
+      "ch_s": 85,
+      "ch_t": 85,
+      "req": "Princípios de Orientação a Objetos, Análise de Sistemas",
+      "req_codes": ["CET236"]
+    },
+    {
+      "cod": "CET513",
+      "name": "Análise de Sistemas",
+      "mod": "Profissional",
+      "semester": "7°",
+      "ch_s": 51,
+      "ch_t": 51,
+      "req": "Princípios de Orientação a Objetos, Engenharia de Software I",
+      "req_codes": ["CET236"]
+    },
+    {
+      "cod": "CET514",
+      "name": "Banco de Dados I",
+      "mod": "Profissional",
+      "semester": "7°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Estruturas de Dados",
+      "req_codes": ["CET224"]
+    },
+    {
+      "cod": "CET515",
+      "name": "Eletrônica Analógica I",
+      "mod": "Profissional",
+      "semester": "7°",
+      "ch_s": 68,
+      "ch_t": 102,
+      "req": "Circuitos Elétricos I",
+      "req_codes": ["CET226"]
+    },
+    {
+      "cod": "CET518",
+      "name": "Linguagens Formais e Autômatos",
+      "mod": "Profissional",
+      "semester": "7°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Lógica para Computação",
+      "req_codes": ["CET519"]
+    },
+    {
+      "cod": "CET520",
+      "name": "Sistemas de Controle",
+      "mod": "Profissional",
+      "semester": "7°",
+      "ch_s": 68,
+      "ch_t": 102,
+      "req": "Sinais e Sistemas",
+      "req_codes": ["CET509"]
+    },
+    {
+      "cod": "CET527",
+      "name": "Sistemas Microcontrolados",
+      "mod": "Específica",
+      "semester": "7°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Circuitos Digitais I",
+      "req_codes": ["CET225"]
+    },
+    {
+      "cod": "CET517",
+      "name": "Sistemas Operacionais",
+      "mod": "Profissional",
+      "semester": "8⁰",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Organização e Arquitetura de Computadores I",
+      "req_codes": ["CET235"]
+    },
+    {
+      "cod": "CET521",
+      "name": "Instrumentação Eletrônica",
+      "mod": "Específica",
+      "semester": "8⁰",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Eletrônica Analógica I",
+      "req_codes": ["CET515"]
+    },
+    {
+      "cod": "CET522",
+      "name": "Teoria da Computação",
+      "mod": "Profissional",
+      "semester": "8⁰",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Linguagens Formais e Autômatos",
+      "req_codes": ["CET518"]
+    },
+    {
+      "cod": "CET526",
+      "name": "Redes de Computadores I",
+      "mod": "Específica",
+      "semester": "8°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Processamento de Dados II",
+      "req_codes": ["CET151"]
+    },
+    {
+      "cod": "CET508",
+      "name": "Matemática Discreta",
+      "mod": "Específica",
+      "semester": "9⁰",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Teoria da Computação",
+      "req_codes": ["CET522"]
+    },
+    {
+      "cod": "CET547",
+      "name": "Sistemas Distribuidos",
+      "mod": "Profissional",
+      "semester": "9°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Redes de Computadores I",
+      "req_codes": ["CET526"]
+    },
+    {
+      "cod": "CET525",
+      "name": "Compiladores",
+      "mod": "Profissional",
+      "semester": "9°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Linguagens Formais e Autômatos, Estruturas de Dados",
+      "req_codes": ["CET518", "CET224"]
+    },
+    {
+      "cod": "CET159",
+      "name": "Inteligência Artificial",
+      "mod": "Específica",
+      "semester": "9°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Lógica para Computação, Estruturas de Dados",
+      "req_codes": ["CET519", "CET224"]
+    },
+    {
+      "cod": "CET528",
+      "name": "Sistemas Embarcados",
+      "mod": "Específica",
+      "semester": "9°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Sistemas Microcontrolados",
+      "req_codes": ["CET527"]
+    },
+    {
+      "cod": "CET516",
+      "name": "Empreendedorismo",
+      "mod": "Profissional",
+      "semester": "10°",
+      "ch_s": 34,
+      "ch_t": 34,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET524",
+      "name": "Sistemas de Tempo Real",
+      "mod": "Específica",
+      "semester": "10°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Sistemas Operacionais",
+      "req_codes": ["CET517"]
+    },
+    {
+      "cod": "CET529",
+      "name": "Aspectos Legais para Computação",
+      "mod": "Profissional",
+      "semester": "10°",
+      "ch_s": 34,
+      "ch_t": 34,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET530",
+      "name": "Projeto de TCC",
+      "mod": "Profissional",
+      "semester": "10⁰",
+      "ch_s": 17,
+      "ch_t": 17,
+      "req": "Nenhum",
+      "req_codes": []
+    },
+    {
+      "cod": "CET531",
+      "name": "Interação Humano-Computador",
+      "mod": "Específica",
+      "semester": "10°",
+      "ch_s": 68,
+      "ch_t": 68,
+      "req": "Engenharia de Software I",
+      "req_codes": ["CET512"]
+    },
+    {
+      "cod": "CET532",
+      "name": "TCC de Engenharia de Computação",
+      "mod": "Profissional",
+      "semester": "11°",
+      "ch_s": 17,
+      "ch_t": 17,
+      "req": "Projeto de TCC",
+      "req_codes": ["CET530"]
+    },
+    {
+      "cod": "CETXXX",
+      "name": "Estágio",
+      "mod": "Profissional",
+      "semester": "11°",
+      "ch_s": 160,
+      "ch_t": 160,
+      "req": "Nenhum",
+      "req_codes": []
+    }
+  ]
+}
