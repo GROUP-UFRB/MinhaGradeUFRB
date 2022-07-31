@@ -26,15 +26,15 @@ model People {
     email     String @unique @db.VarChar(100)
     password  String
 
-    students Student[]
     errors   Error[]
+    Students Student[]
 }
 
 model Student {
     student_id    Int     @id @default(autoincrement())
     register      String
-    score         Float?
-    active        Boolean @default(false)
+    score         Float   @default(0)
+    active        Boolean @default(true)
     init_semester String
 
     people_id           Int
@@ -56,33 +56,33 @@ model Center {
 }
 
 model Course {
-    course_id           Int    @unique @default(autoincrement())
-    cod_course          String @unique
-    name                String
-    workload_S_required Float  @default(0)
-    workload_S_optional Float  @default(0)
+    course_id             Int    @id @default(autoincrement())
+    cod_course            String @unique
+    name                  String
+    workload_S_required   Float  @default(0)
+    workload_S_optional   Float  @default(0)
+    workload_S_complement Float  @default(0)
 
     students               Student[]
     course_require_subject CourseRequireSubject[]
     cod_center             String
 
     center Center @relation(fields: [cod_center], references: [cod_center])
-
-    @@id([course_id, cod_course])
 }
 
 model Subject {
-    subject_id Int    @id @default(autoincrement())
-    weight     Float  @default(0)
-    name       String
-    workload   Float  @default(0)
+    subject_id Int @id @default(autoincrement())
 
-    cod_center Int
+    subject_code String @unique @db.VarChar(10)
+    name         String @db.VarChar(100)
+    workload     Float  @default(0)
+
+    cod_center String
     students   SubjectStudent[]
     requested  CourseRequireSubject[]
     unlock     SubjectRequireSubject[]
 
-    center Center @relation(fields: [cod_center], references: [center_id])
+    center Center @relation(fields: [cod_center], references: [cod_center])
 }
 
 model ComplementActivity {
@@ -97,10 +97,11 @@ model ComplementActivity {
 }
 
 model CourseRequireSubject {
-    course_require_subject_id Int     @id @default(autoincrement())
-    semeter                   String
-    optional                  Boolean
-    weight                    Int
+    course_require_subject_id Int @id @default(autoincrement())
+
+    optional Boolean @default(false)
+    semeter  String
+    weight   Float   @default(0)
 
     cod_course   String
     subject_id   Int
@@ -111,25 +112,24 @@ model CourseRequireSubject {
 }
 
 model SubjectStudent {
-    complement_activity_id Int     @id @default(autoincrement())
-    status                 Boolean
-    score                  Float
-    semester               String  @db.VarChar(6)
+    subject_student_id Int    @id @default(autoincrement())
+    status             String
+    score              Float  @default(0)
+    semester           String @db.VarChar(6)
 
-    subject_id Int
-    student_id Int
+    subject_code String
+    student_id   Int
 
-    subject Subject @relation(fields: [subject_id], references: [subject_id])
+    subject Subject @relation(fields: [subject_code], references: [subject_code])
     student Student @relation(fields: [student_id], references: [student_id])
 }
 
 model SubjectRequireSubject {
-    complement_activity_id Int @id @default(autoincrement())
+    subject_require_subject_id Int @id @default(autoincrement())
 
-    subject_id   Int
+    subject_code String
     require_s_id Int
-    course_id    Int
 
-    subject Subject              @relation(fields: [subject_id], references: [subject_id])
+    subject Subject              @relation(fields: [subject_code], references: [subject_code])
     require CourseRequireSubject @relation(fields: [require_s_id], references: [course_require_subject_id])
 }
