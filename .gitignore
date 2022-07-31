@@ -1,2 +1,2 @@
-*.log
-**/fpga
+**.pyc
+**/__pycahe__
