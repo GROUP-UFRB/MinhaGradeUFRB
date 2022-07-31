@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+const jwt = require("jsonwebtoken");
 
 const prisma = new PrismaClient();
 
@@ -16,7 +17,17 @@ const peopleController = {
       });
       if (people) {
         if (people.password === password) {
-          return res.json({ message: "Login success." });
+          const token = jwt.sign(
+            { people_id: people.people_id, email },
+            "bbmp",
+            {
+              expiresIn: "7d",
+            }
+          );
+
+          people.token = token;
+
+          return res.status(200).json(people);
         } else {
           return res.json({ message: "Incorrect data, try again." });
         }
@@ -49,9 +60,15 @@ const peopleController = {
           password,
         },
       });
+      const token = jwt.sign({ people_id: people.people_id, email }, "bbmp", {
+        expiresIn: "7d",
+      });
+
+      people.token = token;
+
       return res.status(201).json(people);
     } catch (error) {
-        return res.status(500).json(error);
+      return res.status(500).json(error);
     }
   },
 };
