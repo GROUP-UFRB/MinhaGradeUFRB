@@ -2,8 +2,7 @@ from types import *
 
 class People():
     name : char
-    people_id: char
-    email: char
+    people_id: char #email
     password: char
 
     def primary_key(self, people_id):
@@ -17,6 +16,7 @@ class Student():
     init_semester: char
     course_id: Course #Registered Relatioship: A student can have only one course at time
     people_id: People #CanBe Relatioship
+
     def primary_key(self, register):
         return register
 
@@ -30,7 +30,6 @@ class Center():
 
 class Subject():
     subject_id : char
-    weight: float
     name : char
     workload: int
     cod_center : Center #From relatioship
@@ -58,21 +57,22 @@ class Error():
 
     def primary_key(self, error_id):
         return error_id
-    
-    def foreign_key(self, people_id) -> Reference(People):
-        return people_id
 
-
-class ComplementActivity():
+class CmptActvt():
 
     title: char
     type_activity: char
-    value: float
-    unit: char
     register: Student #Have relatioship
 
     def primary_key(self, title, register):
         return title, register
+
+class TypCmpt():
+    type_activity: CmptActvt
+    value: float
+
+    def primary_key(self, type_activity):
+        return type_activity
 
 class CourseRequireSubject():
     
@@ -92,9 +92,6 @@ class SubjectStudent():
     register: Student #Student can be registered in N Subjects
 
     def primary_key(self, subject_id, register): 
-        return subject_id, register
-
-    def foreign_key(self, subject_id, register) -> Reference(Subject, Student) :
         return subject_id, register
 
 class SubjectRequireSubject():
