@@ -1,9 +1,11 @@
+const PeopleRepository = require("../repositories/people");
 const LoginUseCase = require("../useCases/people/login");
 const RegisterUseCase = require("../useCases/people/register");
 
 const peopleController = {
   async login(req, res) {
-    const loginUseCase = new LoginUseCase();
+    const peopleRepository = PeopleRepository();
+    const loginUseCase = new LoginUseCase(peopleRepository);
     try {
       const people = await loginUseCase.execute(req.body);
       return res.json({
@@ -18,7 +20,8 @@ const peopleController = {
   },
 
   async register(req, res) {
-    const registerUseCase = new RegisterUseCase();
+    const peopleRepository = PeopleRepository();
+    const registerUseCase = new RegisterUseCase(peopleRepository);
     try {
       const people = await registerUseCase.execute(req.body);
       return res.json({
