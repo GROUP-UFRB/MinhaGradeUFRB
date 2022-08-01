@@ -31,4 +31,4 @@ EXCEPT
   	ss.student_id = 2
     AND ss.status = 'aprovado'
     AND crs.cod_course = 'BCET'
-  ORDER BY weight
+  ORDER BY weight DESC
