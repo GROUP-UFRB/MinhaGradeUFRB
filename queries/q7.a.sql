@@ -35,6 +35,6 @@ with total_carga_horaria_curso as (
 )
 
 SELECT
-	(cast(carga_horaria_total_aluno as float8)/ carga_horaria_total_curso) as carga_horario_restante
+	(cast(carga_horaria_total_aluno as float8)/ carga_horaria_total_curso) as porcentagem_carga_horario_restante
 FROM 
 	total_carga_horaria_curso, total_carga_horaria_aluno
