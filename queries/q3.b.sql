@@ -4,13 +4,31 @@ Query: Quais as matérias que precisam ser pegas, por ordem de peso?
 /*
 TODO assert provide student_id
 */
-select sub.subject_id, sub.name, sub.cod_center, sub.weight, sub.workload 
-
-    from minhagrade.Subject sub, minhagrade.Course c, minhagrade.Student s,
-    minhagrade.CourseRequireSubject c_r_s
-
-        where
-            s.student_id        = student_id
-            and c_r_s.course_id = s.course_id
-            and sub.subject_id  = c_r_s.subject_id
-    order by sub.weight
+SELECT
+	s.subject_id, s.name, s.cod_center, crs.weight, s.workload 
+FROM
+	"CourseRequireSubject" crs
+JOIN
+	"Subject" s
+ON
+	s.subject_id = crs.subject_id
+WHERE
+    crs.cod_course = 'BCET'
+EXCEPT
+	SELECT
+  	s.subject_id, s.name, s.cod_center, crs.weight, s.workload 
+	FROM
+  	"SubjectStudent" ss
+  JOIN
+		"Subject" s
+	ON
+		s.subject_code = ss.subject_code
+  JOIN
+  	"CourseRequireSubject" crs
+  ON
+		s.subject_id = crs.subject_id
+  WHERE
+  	ss.student_id = 2
+    AND ss.status = 'aprovado'
+    AND crs.cod_course = 'BCET'
+  ORDER BY weight DESC

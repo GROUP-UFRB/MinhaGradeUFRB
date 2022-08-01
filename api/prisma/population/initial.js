@@ -55,7 +55,7 @@ async function main() {
         cod_center: center.cod_center,
         requested: {
           create: {
-            optional: sbj.mod == "Básica",
+            optional: !(sbj.mod == "Básica"),
             semeter: sbj.semester.slice(0, -1),
             cod_course: course.cod_course,
             requirements: {
