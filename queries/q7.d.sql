@@ -7,7 +7,7 @@ with total_carga_horaria_curso as (
         "CourseRequireSubject" crs
         JOIN "Subject" s ON crs.subject_id = s.subject_id
     WHERE
-        crs.cod_course = 'BCET'
+        crs.cod_course = 'BCET' /*codigo do outro curso*/
 ),
 total_carga_horaria_aluno as (
     SELECT
