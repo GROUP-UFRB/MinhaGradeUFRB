@@ -1,22 +1,30 @@
 /*
-Query: Quais as próximas x matérias de maior prioridade?
-*/
-/*
-TODO assert provide student_id, x
-*/
-select sub.subject_id, sub.name, sub.cod_center, sub.weight, sub.workload 
-
-    from minhagrade.Subject sub, minhagrade.Course c, minhagrade.Student s,
-    minhagrade.CourseRequireSubject c_r_s, minhagrade.SubjectStudent s_s
-
-        where
-            s.student_id        = student_id
-            and c_r_s.course_id = s.course_id
-            and sub.subject_id  = c_r_s.subject_id
-            and s_s.student_id  = student_id
-            and s_s.status      = "Approved"
-            and sub.subject_id != s_s.subject_id
-            
-    order by sub.weight, c_r_s.semester
-
-    limit x
+ Quais as próximas x matérias de maior prioridade?
+ */
+SELECT
+    s.subject_code,
+    s.name,
+    s.workload,
+    crs.weight
+FROM
+    "CourseRequireSubject" crs
+    JOIN "Subject" s ON s.subject_id = crs.subject_id
+EXCEPT
+SELECT
+    s.subject_code,
+    s.name,
+    s.workload,
+    crs.weight
+FROM
+    "SubjectStudent" ss
+    JOIN "Subject" s ON s.subject_code = ss.subject_code
+    JOIN "CourseRequireSubject" crs ON crs.subject_id = s.subject_id
+WHERE
+    s.subject_id = 2
+    and ss.status = 'aprovado'
+    and crs.cod_course = 'BCET'
+ORDER BY
+    weight DESC
+LIMIT
+    6
+    /*x*/
