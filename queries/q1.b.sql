@@ -1,5 +1,4 @@
-/* Com as matérias já executadas pelo aluno neste curso, 
-qual a porcentagem de carga horária obrigatória para o aluno em relação ao total em outro curso? */
+/* Qual a porcentagem de carga horária obrigatória para o aluno executada em relação ao total? */
 
 with total_carga_horaria_curso as (
 	SELECT
@@ -11,7 +10,7 @@ with total_carga_horaria_curso as (
   ON
   	crs.subject_id = s.subject_id
   WHERE
-  	crs.cod_course = 'BCET' /*Curso objetivo*/
+  	crs.cod_course = 'BCET'
   	and crs.optional = false
 ),
 	total_carga_horaria_aluno as (
@@ -28,7 +27,7 @@ with total_carga_horaria_curso as (
   ON
     crs.subject_id = s.subject_id
   WHERE
-    crs.cod_course = 'BCET' /*Curso atual*/
+    crs.cod_course = 'BCET'
     and ss.student_id = 2
     and ss.status = 'aprovado'
     and crs.optional = false
