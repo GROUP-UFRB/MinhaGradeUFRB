@@ -1,7 +1,4 @@
-const { PrismaClient } = require("@prisma/client");
 const createToken = require("../../utils/createToken");
-
-const prisma = new PrismaClient();
 
 class RegisterUseCase {
   constructor(peopleRepository) {
