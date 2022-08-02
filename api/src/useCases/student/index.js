@@ -1,7 +1,3 @@
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
-
 class FindByIdStudentUseCase {
   constructor(studentRepository) {
     this.studentRepository = studentRepository;

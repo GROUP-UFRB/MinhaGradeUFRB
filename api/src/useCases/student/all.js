@@ -1,8 +1,4 @@
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
-
-class FindlAllStudentUseCase {
+class FindAllStudentUseCase {
   constructor(studentRepository) {
     this.studentRepository = studentRepository;
   }
@@ -16,4 +12,4 @@ class FindlAllStudentUseCase {
   }
 }
 
-module.exports = FindlAllStudentUseCase;
+module.exports = FindAllStudentUseCase;
