@@ -2,18 +2,37 @@
 Query: Quantas matérias o aluno está tendo aprovação em média por semestre?
 */
 
-with not_aproved_subjects as (
-    select s_s.semester, count(sub.subject_id) as count_appr
-
-    from minhagrade.Subject sub, minhagrade.SubjectStudent s_s
-        where 
-            s_s.student_id      = student_id
-            and s_s.status      = "Approved"
-
-    group by s_s.semester
+with materias_por_semestre as (
+	SELECT
+  	semester, count(ss.subject_code) as materias
+  FROM
+  	"SubjectStudent" ss
+  JOIN
+  	"Subject" s
+  ON
+  	s.subject_code = ss.subject_code
+ 	WHERE
+  	ss.student_id = 1
+  GROUP BY semester
+), 
+aprovacoes_por_semestre as (
+	SELECT
+  	semester, count(ss.subject_code) as aprovacoes
+  FROM
+  	"SubjectStudent" ss
+  JOIN
+  	"Subject" s
+  ON
+  	s.subject_code = ss.subject_code
+ 	WHERE
+  	ss.student_id = 1
+  	and ss.status = 'aprovado'
+  GROUP BY semester
 )
 
-select mean(n_a_s.count_appr) as mean_appr
-
-    from not_aproved_subjects n_a_s
-
+SELECT
+	ma.semester, ma.materias, ap.aprovacoes, (cast(ap.aprovacoes as float)/ma.materias) as indice
+FROM
+	"materias_por_semestre" ma, "aprovacoes_por_semestre" ap
+WHERE
+	ma.semester = ap.semester
