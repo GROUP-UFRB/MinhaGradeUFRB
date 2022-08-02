@@ -15,6 +15,11 @@ class StudentRepository {
     return students;
   }
 
+  async findById(student_id) {
+    const student = await prisma.student.findUnique({where: {student_id}})
+    return student;
+  }
+
   async create(data) {
     const student = await prisma.student.create({
       data: data,
