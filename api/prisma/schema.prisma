@@ -90,7 +90,6 @@ model ComplementActivity {
     title                  String
     type_activity          String
     value                  Float
-    unit                   String
     student_id             Int
 
     student Student @relation(fields: [student_id], references: [student_id])
@@ -100,7 +99,7 @@ model CourseRequireSubject {
     course_require_subject_id Int @id @default(autoincrement())
 
     optional Boolean @default(false)
-    semeter  String
+    semester String
     weight   Float   @default(0)
 
     cod_course   String
