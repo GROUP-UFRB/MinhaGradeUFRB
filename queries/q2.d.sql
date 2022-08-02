@@ -1,4 +1,4 @@
-/* Quais as matérias que o aluno não pode pegar?*/
+/* Quais as matérias o aluno pode pegar?*/
 with materias_nao_pegas as (
     SELECT
         s.subject_code,
@@ -8,6 +8,8 @@ with materias_nao_pegas as (
     FROM
         "CourseRequireSubject" crs
         JOIN "Subject" s ON s.subject_id = crs.subject_id
+    WHERE
+        crs.cod_course = 'BCET'
     EXCEPT
     SELECT
         s.subject_code,
@@ -38,8 +40,17 @@ materias_nao_pode_pegar as (
         "id_materias_bloqueadas" r1
         JOIN "Subject" s ON s.subject_id = r1.require_s_id
 )
+
 SELECT
-    mnpp.subject_code,
+    mnp.subject_code,
+    mnp.name,
+    mnp.workload,
+    mnp.weight
+FROM
+   "materias_nao_pegas" mnp
+EXCEPT
+SELECT
+    distinct mnpp.subject_code,
     mnpp.name,
     mnpp.workload,
     crs.weight
