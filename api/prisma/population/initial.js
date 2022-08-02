@@ -56,7 +56,7 @@ async function main() {
         requested: {
           create: {
             optional: !(sbj.mod == "Básica"),
-            semeter: sbj.semester.slice(0, -1),
+            semester: sbj.semester.slice(0, -1),
             cod_course: course.cod_course,
             requirements: {
               create: sbj.req_codes.map((code) => {
