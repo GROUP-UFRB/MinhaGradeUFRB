@@ -11,6 +11,13 @@ class PeopleRepository {
         return people;
     }
 
+    async findById(people_id) {
+        const people = await prisma.people.findFirst({
+            where: { people_id: people_id },
+        });
+        return people;
+    }
+
     async create(data) {
         const people = await prisma.people.create({
             data: data
