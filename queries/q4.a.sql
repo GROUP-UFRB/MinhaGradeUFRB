@@ -20,7 +20,7 @@ FROM
     JOIN "Subject" s ON s.subject_code = ss.subject_code
     JOIN "CourseRequireSubject" crs ON crs.subject_id = s.subject_id
 WHERE
-    s.subject_id = 2
+    ss.student_id = 1
     and ss.status = 'aprovado'
     and crs.cod_course = 'BCET'
 ORDER BY
