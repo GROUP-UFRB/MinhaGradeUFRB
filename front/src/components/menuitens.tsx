@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { headerStyle, studentInfoStyle } from "../styles/barStyle";
 import clsx from "clsx";
 
@@ -16,8 +17,6 @@ import clsx from "clsx";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PeopleIcon from "@material-ui/icons/People";
-import BarChartIcon from "@material-ui/icons/BarChart";
-import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 
 export function UserHeader({ iconFunction }: { iconFunction: () => void }) {
@@ -26,11 +25,11 @@ export function UserHeader({ iconFunction }: { iconFunction: () => void }) {
   return (
     <Container className={classes.root}>
       <Avatar aria-label="recipe" className={classes.avatar}>
-        R
+        S
       </Avatar>
       <Container className={classes.textContainer}>
-        <Typography variant="subtitle1">Chorizo Paella</Typography>
-        <Typography variant="caption">21 de setembro</Typography>
+        <Typography variant="subtitle1">Sinezio Morais</Typography>
+        <Typography variant="caption">UFRB</Typography>
       </Container>
       <IconButton onClick={iconFunction}>
         <ChevronLeftIcon />
@@ -44,18 +43,23 @@ export function ViewingAs({ isVisible }: { isVisible?: Boolean }) {
 
   return (
     <Container className={clsx(classes.root, isVisible && classes.viewAs)}>
-      <Typography variant="caption">Visualizando como</Typography>
-      <Container className={classes.textContainer}>
-        <Typography variant="subtitle2">Engenharia de Computação</Typography>
-        <Container className={classes.status} disableGutters>
-          <Typography className={classes.register} variant="caption">
-            2018103271
-          </Typography>
+      <Container className={classes.info}>
+        <Typography variant="caption">Visualizando como</Typography>
+        <Container className={classes.textContainer}>
+          <Typography variant="subtitle2">Engenharia de Computação</Typography>
+          <Container className={classes.status} disableGutters>
+            <Typography className={classes.register} variant="caption">
+              2018103271
+            </Typography>
 
-          <Typography className={classes.active} variant="caption">
-            Ativo
-          </Typography>
+            <Typography className={classes.active} variant="caption">
+              Ativo
+            </Typography>
+          </Container>
         </Container>
+      </Container>
+      <Container disableGutters>
+        <ChevronRightIcon />
       </Container>
     </Container>
   );

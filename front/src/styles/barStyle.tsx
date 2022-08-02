@@ -16,23 +16,33 @@ export const headerStyle = makeStyles((theme) => ({
     paddingLeft: 15,
     maxWidth: 180,
     userSelect: "none",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
   },
 
   avatar: {
     backgroundColor: red[500],
+    marginLeft: 5,
   },
 }));
 
 export const studentInfoStyle = makeStyles((theme) => ({
   root: {
     margin: 0,
+    padding: 0,
     display: "flex",
+    flexDirection: "row",
+    color: "#444",
+    alignItems: "center",
+  },
+  info: {
+    margin: 0,
+    display: "flex",
+    padding: "5px 5px",
     alignItems: "center",
     flexDirection: "column",
-    padding: "5px 10px",
-    color: "#444",
   },
-
   status: {
     display: "flex",
     justifyContent: "space-between",
