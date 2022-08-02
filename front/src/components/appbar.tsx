@@ -23,8 +23,6 @@ import {
   mainListItems,
   secondaryListItems,
 } from "./menuitens";
-import { BarGraps, PieGraps } from "./graps";
-import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import {
   DoubleRow,
   FormGrid,
@@ -34,10 +32,6 @@ import {
   SubjectList,
   SubjectRadar,
 } from "./grids";
-
-// import Chart from "./Chart";
-// import Deposits from "./Deposits";
-// import Orders from "./Orders";
 
 function Copyright() {
   return (
