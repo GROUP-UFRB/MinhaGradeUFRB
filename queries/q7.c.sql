@@ -6,7 +6,7 @@ with carga_horaria_complementar_curso as (
     FROM
         "Course" co
     WHERE
-        co.cod_course = 'BCET'
+        co.cod_course = 'BCET' /*curso objetivo*/
 ),
 carga_horaria_complementar_aluno as (
     SELECT
