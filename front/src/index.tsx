@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./components/appbar";
+import App from "./pages/router";
 import { createGlobalStyle } from "styled-components";
 
 const root = ReactDOM.createRoot(
