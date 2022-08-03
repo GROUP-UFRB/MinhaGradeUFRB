@@ -32,6 +32,7 @@ import {
   SubjectList,
   SubjectRadar,
 } from "./grids";
+import { Outlet } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -111,10 +112,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     overflow: "auto",
   },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
 }));
 
 export default function Dashboard() {
@@ -187,24 +184,7 @@ export default function Dashboard() {
       {/* Drawer */}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <InfoGrids />
-            {/* Double Row */}
-            <DoubleRow xs={12} md={5} lg={4}>
-              <FormGrid />
-              <SemesterDoubleRow />
-            </DoubleRow>
-            {/* Bar Chart */}
-            <DoubleRow>
-              <SemesterHistoric />
-              <Grid container spacing={3}>
-                <SubjectList />
-                <SubjectRadar />
-              </Grid>
-            </DoubleRow>
-          </Grid>
-        </Container>
+        <Outlet />
         <Box pt={4}>
           <Copyright />
         </Box>
