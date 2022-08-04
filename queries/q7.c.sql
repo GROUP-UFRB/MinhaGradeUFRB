@@ -1,20 +1,21 @@
-/*Com as matérias já executadas pelo aluno neste curso, 
- qual a porcentagem de carga horária complementar para o aluno executada em relação ao total?*/
+/*Qual a porcentagem de carga horária complementar para o aluno executada em relação ao total?*/
 with carga_horaria_complementar_curso as (
     SELECT
         "workload_S_complement" as carga_horaria_complementar_curso
     FROM
         "Course" co
     WHERE
-        co.cod_course = 'BCET' /*curso objetivo*/
+        co.cod_course = 'BCET'
+        /*curso objetivo*/
 ),
 carga_horaria_complementar_aluno as (
     SELECT
-        sum(ca.value) as carga_horaria_complementar_aluno
+        sum(tac.value) as carga_horaria_complementar_aluno
     FROM
         "ComplementActivity" ca
+        JOIN "TypeComplementActivity" tac ON tac.type_activity = ca.type_activity
     WHERE
-        ca.student_id = 2
+        ca.register = '201811509'
 )
 SELECT
     (

@@ -10,7 +10,7 @@ async function main() {
   var center = await prisma.center.create({
     data: {
       cod_center: "CETEC",
-      center_id: 1,
+      id: 1,
       name: "Centro de Ciências Exatas e Tecnológicas",
     },
   });
@@ -60,7 +60,10 @@ async function main() {
             cod_course: course.cod_course,
             requirements: {
               create: sbj.req_codes.map((code) => {
-                return { subject_code: code };
+                return { 
+                  cod_course: 'BCET',
+                  subject_code: code 
+                };
               }),
             },
           },
@@ -96,7 +99,7 @@ async function main() {
           {
             register: "201811509",
             init_semester: "2018",
-            course_id: course.course_id,
+            cod_course: course.cod_course,
             subjects: {
               createMany: {
                 data: subject_codes.map((sbj) => {

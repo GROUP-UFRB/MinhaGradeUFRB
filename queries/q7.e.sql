@@ -5,7 +5,7 @@ with total_carga_horaria_curso as (
         sum(workload) as carga_horaria_total_curso
     FROM
         "CourseRequireSubject" crs
-        JOIN "Subject" s ON crs.subject_id = s.subject_id
+        JOIN "Subject" s ON crs.subject_code = s.subject_code
     WHERE
         crs.cod_course = 'BCET'
 ),
@@ -15,9 +15,9 @@ total_carga_horaria_aluno as (
     FROM
         "SubjectStudent" ss
         JOIN "Subject" s ON s.subject_code = ss.subject_code
-        JOIN "CourseRequireSubject" crs ON crs.subject_id = s.subject_id
+        JOIN "CourseRequireSubject" crs ON crs.subject_code = s.subject_code
     WHERE
-        ss.student_id = 2
+        ss.register = '201811509'
         and ss.status = 'aprovado'
 )
 SELECT

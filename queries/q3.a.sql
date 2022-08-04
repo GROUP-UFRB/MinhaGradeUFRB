@@ -1,19 +1,21 @@
 /*
-Query: Quais as matérias de maior peso do curso?
-*/
-
+ Query: Quais as matérias de maior peso do curso?
+ */
 /*
-TODO assert provide student_id
-*/
+ TODO assert provide student_id
+ */
 SELECT
-	sub.subject_id, sub.name, sub.cod_center, crs.weight, sub.workload 
+	sub.subject_code,
+	sub.name,
+	sub.cod_center,
+	crs.weight,
+	sub.workload
 FROM
 	"CourseRequireSubject" crs
-JOIN
-	"Subject" sub
-ON
-	sub.subject_id = crs.subject_id
+	JOIN "Subject" sub ON sub.subject_code = crs.subject_code
 WHERE
 	crs.cod_course = 'BCET'
-ORDER BY crs.weight DESC
-LIMIT 5
+ORDER BY
+	crs.weight DESC
+LIMIT
+	5
