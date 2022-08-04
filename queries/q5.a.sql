@@ -32,7 +32,5 @@ SELECT
 	ap.aprovacoes,
 	(cast(ap.aprovacoes as float) / ma.materias) as indice
 FROM
-	"materias_por_semestre" ma,
-	"aprovacoes_por_semestre" ap
-WHERE
-	ma.semester = ap.semester
+	"materias_por_semestre" ma
+	LEFT JOIN "aprovacoes_por_semestre" ap ON ma.semester = ap.semester

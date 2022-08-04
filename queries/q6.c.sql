@@ -26,10 +26,8 @@ r2 as (
     s.subject_code
 )
 SELECT
-  r1.subject_code,
+  r2.subject_code,
   Cast(r1.qtd_approved as float) / r2.qtd_registers as indice_aprovacao
 FROM
-  r1,
   r2
-WHERE
-  r1.subject_code = r2.subject_code
+  LEFT JOIN r1 ON r2.subject_code = r1.subject_code
