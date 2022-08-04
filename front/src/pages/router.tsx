@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 
 import App from "../components/appbar";
+import auth from "../controllers/auth";
 import Dashboard from "./dashboard";
 import Login from "./login";
 import Singup from "./singup";
@@ -34,7 +35,7 @@ export default function Routers() {
     );
 
   const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {
-    isAuthenticated: true,
+    isAuthenticated: auth.isAuthenticated(),
     authenticationPath: "/login",
   };
 
