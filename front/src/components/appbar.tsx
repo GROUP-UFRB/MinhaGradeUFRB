@@ -11,10 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
+import ExitIcon from "@material-ui/icons/ExitToApp";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import {
@@ -32,7 +31,8 @@ import {
   SubjectList,
   SubjectRadar,
 } from "./grids";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import auth from "../controllers/auth";
 
 function Copyright() {
   return (
@@ -117,6 +117,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -124,6 +125,8 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const exitToApp = () => auth.logout(navigate);
 
   return (
     <div className={classes.root}>
@@ -160,6 +163,10 @@ export default function Dashboard() {
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
+          </IconButton>
+
+          <IconButton color="inherit" onClick={exitToApp}>
+            <ExitIcon />
           </IconButton>
           {/* Notification */}
         </Toolbar>
