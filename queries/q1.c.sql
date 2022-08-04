@@ -13,10 +13,10 @@ carga_horaria_opcional_aluno as (
   FROM
     "SubjectStudent" ss
     JOIN "Subject" s ON s.subject_code = ss.subject_code
-    JOIN "CourseRequireSubject" crs ON crs.subject_id = s.subject_id
+    JOIN "CourseRequireSubject" crs ON crs.subject_code = s.subject_code
   WHERE
     crs.cod_course = 'BCET'
-    and ss.student_id = 2
+    and ss.register = '201811509'
     and ss.status = 'aprovado'
     and crs.optional = true
 )

@@ -6,7 +6,7 @@ with matriculas as (
     FROM
         "SubjectStudent" ss
     WHERE
-        ss.subject_code = 'CET146'
+        ss.subject_code = 'CET171'
     GROUP BY
         ss.subject_code
 ),
@@ -18,7 +18,7 @@ aprovados as (
         "SubjectStudent" ss
     WHERE
         ss.status = 'aprovado'
-        and ss.subject_code = 'CET146'
+        and ss.subject_code = 'CET171'
     GROUP BY
         ss.subject_code
 )

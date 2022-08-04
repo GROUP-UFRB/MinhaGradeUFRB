@@ -9,11 +9,12 @@ with carga_horaria_complementar_curso as (
 ),
 carga_horaria_complementar_aluno as (
     SELECT
-        sum(ca.value) as carga_horaria_complementar_aluno
+        sum(tca.value) as carga_horaria_complementar_aluno
     FROM
         "ComplementActivity" ca
+        JOIN "TypeComplementActivity" tca ON tca.type_activity = ca.type_activity
     WHERE
-        ca.student_id = 2
+        ca.register = '201811509'
 )
 SELECT
     (

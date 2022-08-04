@@ -4,10 +4,10 @@
 with resultados as (
     SELECT
         s.subject_code,
-        count(subject_student_id) as todos_resultados
+        count(ss.id) as todos_resultados
     FROM
         "CourseRequireSubject" crs
-        JOIN "Subject" s ON s.subject_id = crs.subject_id
+        JOIN "Subject" s ON s.subject_code = crs.subject_code
         JOIN "SubjectStudent" ss ON ss.subject_code = s.subject_code
     WHERE
         crs.cod_course = 'BCET'
@@ -19,10 +19,10 @@ with resultados as (
 aprovados as (
     SELECT
         s.subject_code,
-        count(subject_student_id) as todos_aprovados
+        count(ss.id) as todos_aprovados
     FROM
         "CourseRequireSubject" crs
-        JOIN "Subject" s ON s.subject_id = crs.subject_id
+        JOIN "Subject" s ON s.subject_code = crs.subject_code
         JOIN "SubjectStudent" ss ON ss.subject_code = s.subject_code
     WHERE
         crs.cod_course = 'BCET'
@@ -33,7 +33,9 @@ aprovados as (
 )
 SELECT
     re.subject_code,
-    (cast(todos_aprovados as float) / todos_resultados) as indice_aprovacao
+    (
+        cast(todos_aprovados as float) / todos_resultados
+    ) as indice_aprovacao
 FROM
     "resultados" re,
     "aprovados" ap

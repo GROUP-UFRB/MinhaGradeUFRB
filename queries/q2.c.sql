@@ -7,7 +7,7 @@ with materias_nao_pegas as (
         crs.weight
     FROM
         "CourseRequireSubject" crs
-        JOIN "Subject" s ON s.subject_id = crs.subject_id
+        JOIN "Subject" s ON s.subject_code = crs.subject_code
     EXCEPT
     SELECT
         s.subject_code,
@@ -17,15 +17,15 @@ with materias_nao_pegas as (
     FROM
         "SubjectStudent" ss
         JOIN "Subject" s ON s.subject_code = ss.subject_code
-        JOIN "CourseRequireSubject" crs ON crs.subject_id = s.subject_id
+        JOIN "CourseRequireSubject" crs ON crs.subject_code = s.subject_code
     WHERE
-        ss.student_id = 1
+        ss.register = '201811509'
         and ss.status = 'aprovado'
         and crs.cod_course = 'BCET'
 ),
 id_materias_bloqueadas as (
     SELECT
-        srs.require_s_id
+        srs.require_s_code
     FROM
         "materias_nao_pegas" mnp
         JOIN "SubjectRequireSubject" srs ON srs.subject_code = mnp.subject_code
@@ -36,7 +36,7 @@ materias_nao_pode_pegar as (
         distinct *
     FROM
         "id_materias_bloqueadas" r1
-        JOIN "Subject" s ON s.subject_id = r1.require_s_id
+        JOIN "Subject" s ON s.subject_code = r1.require_s_code
 )
 SELECT
     mnpp.subject_code,
@@ -45,7 +45,7 @@ SELECT
     crs.weight
 FROM
     "materias_nao_pode_pegar" mnpp
-    JOIN "CourseRequireSubject" crs ON crs.subject_id = mnpp.subject_id
+    JOIN "CourseRequireSubject" crs ON crs.subject_code = mnpp.subject_code
 WHERE
     crs.cod_course = 'BCET'
 order by

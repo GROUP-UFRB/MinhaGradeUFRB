@@ -12,7 +12,7 @@ with r1 as (
   JOIN
     "CourseRequireSubject" crs
   ON
-    s.subject_id = crs.subject_id
+    s.subject_code = crs.subject_code
   WHERE
     crs.cod_course = 'BCET'
     and ss.status = 'aprovado'
@@ -31,7 +31,7 @@ r2 as (
   JOIN
     "CourseRequireSubject" crs
   ON
-    s.subject_id = crs.subject_id
+    s.subject_code = crs.subject_code
   WHERE
     crs.cod_course = 'BCET'
   	and ss.status != 'cursando'
