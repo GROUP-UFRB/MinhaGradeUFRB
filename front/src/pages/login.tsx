@@ -13,6 +13,12 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { useForm } from "react-hook-form";
+
+import auth from "../controllers/auth";
+import { FormInputText } from "../components/forms";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -63,6 +69,13 @@ const useStyles = makeStyles((theme) => ({
 export default function SignInSide() {
   const classes = useStyles();
 
+  const { handleSubmit, control } = useForm();
+  const navigate = useNavigate();
+
+  function onSubmit() {
+    auth.login({ email: "teste@gmail.com", password: "1234" }, navigate);
+  }
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -75,8 +88,13 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
+          <form
+            className={classes.form}
+            noValidate
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <FormInputText
+              control={control}
               variant="outlined"
               margin="normal"
               required
@@ -87,7 +105,8 @@ export default function SignInSide() {
               autoComplete="email"
               autoFocus
             />
-            <TextField
+            <FormInputText
+              control={control}
               variant="outlined"
               margin="normal"
               required
@@ -118,9 +137,11 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <RouterLink to="/signup">
+                  <Link href="#" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </RouterLink>
               </Grid>
             </Grid>
             <Box mt={5}>
