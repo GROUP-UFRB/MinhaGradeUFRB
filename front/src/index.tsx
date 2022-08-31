@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./pages/router";
 import { createGlobalStyle } from "styled-components";
+import { CssBaseline } from "@material-ui/core";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,7 +19,7 @@ const Global = createGlobalStyle`
 
 root.render(
   <React.StrictMode>
-    <Global />
+    <CssBaseline />
     <App />
   </React.StrictMode>
 );
