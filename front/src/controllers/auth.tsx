@@ -11,7 +11,7 @@ class Auth {
     try {
       //    const Response = await api.post("/", data);
       this.saveToken("faketoken");
-      navigate && navigate("/dashboard");
+      navigate && navigate("/");
     } catch (error) {
       return error;
     }
