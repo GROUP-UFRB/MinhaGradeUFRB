@@ -239,7 +239,7 @@
       "name": "Transferência de Calor e Massa",
       "mod": "Profissional",
       "semester": "6°",
-      "ch_s": "68",
+      "ch_s": 68,
       "ch_t": 68,
       "req": "Fenômenos de Transporte"
     },
