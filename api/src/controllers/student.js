@@ -1,3 +1,5 @@
+const formodable = require("formodable"); //for file upload
+
 const CreateStudentUseCase = require("../useCases/student/create");
 const FindAllStudentUseCase = require("../useCases/student/all");
 const FindByIdStudentUseCase = require("../useCases/student/index");
@@ -50,6 +52,31 @@ const studentController = {
       return res.status(500).json({ message: error.message });
     }
   },
+
+  async createByHistory(req, res){
+    /*This function hundles the request for uploading a PDF
+     file with history information about the user. The user
+     must be logged into an acount to do that.
+
+    TODO: The 
+
+     The algorithm:
+     1. receive the file
+     2. call pdf crawler hundler for information extraction
+     3. call the database hundler to save
+    */
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      var filePath = files.filetoupload.filepath; //the file uploaded location
+
+      var extention = file.fileupload.originalFilename.slice(-3,);
+      if (extention != "PDF" || extention != "pdf"){
+        //remove the file and say to user that the system can't receive files different of PDF
+
+        return res.status(415).json({ message: "The file is not supported." });
+      }
+    })
+  }
 };
 
 module.exports = studentController;

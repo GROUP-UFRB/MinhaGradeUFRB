@@ -4,13 +4,13 @@ services:
   dev:
     build:
       context: .
-      dockerfile: ./Dockerfiles/Dockerfile
-    container_name: minha_grade
+      dockerfile: ./Dockerfiles/DockerfileBack
+    container_name: minha_grade_UFRB
     depends_on:
       - db
     command: sh -c "yarn dev"
     ports:
-      - "3333:3000"
+      - "3111:3111"
     environment:
       DATABASE_URL: postgresql://docker:docker@db:5432/minhagrade?schema=public
     volumes:
@@ -19,6 +19,18 @@ services:
       - /usr/app/prisma
     networks:
       - app-network
+
+#  apache:
+#    image: httpd:latest
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfiles/DockerfileApache
+#    container_name: apache-server
+#    ports:
+#    - '80:80' #listen on 80
+    #command: a2enmod proxy; /etc/init.d/apache2 restart
+    #volumes:
+    #- /usr/local/apache2/conf/ :conf/httpd.conf
 
   db:
     image: postgis/postgis

@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: pdf_to_json_service
+    #command: sh -c "yarn dev"
+    ports:
+      - "8000:5000"
+
+  redis:
+    image: "redis:alpine"
+
+
+  
