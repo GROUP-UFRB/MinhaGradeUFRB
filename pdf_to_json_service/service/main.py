@@ -1,8 +1,7 @@
-from genericpath import isdir
-import os
 from flask import Flask
 from pdf_to_json import *
 from flask import Flask, request, json
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -59,4 +58,4 @@ def upload_file():
 
 if __name__ == "__main__":
     #app.run(host="localhost", port=8000) only to test
-    pass
+    serve(app, listen='*:8000') #on production environment

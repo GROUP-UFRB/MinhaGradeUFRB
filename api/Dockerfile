@@ -3,12 +3,10 @@ FROM node:alpine
 WORKDIR /usr/app
 
 COPY package*.json ./
-
-RUN yarn install
-
 COPY . .
 
-RUN yarn prisma generate
+RUN yarn install  \
+    && yarn prisma generate
 
 EXPOSE 3000
 

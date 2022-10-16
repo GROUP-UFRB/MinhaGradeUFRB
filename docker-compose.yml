@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  dev:
+  nodeserver:
     build:
-      context: .
+      context: ./api
       dockerfile: ./Dockerfile
     container_name: minha_grade_UFRB
     depends_on:
@@ -14,11 +14,27 @@ services:
     environment:
       DATABASE_URL: postgresql://docker:docker@db:5432/minhagrade?schema=public
     volumes:
-      - .:/usr/app
+      - ./api:/usr/app
       - /usr/app/node_modules
       - /usr/app/prisma
     networks:
       - app-network
+
+  reactfront:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: front_ngnix
+    ports:
+      - "80:80"
+
+  crawler_s:
+    build:
+      context: ./pdf_to_json_service
+      dockerfile: ./Dockerfile
+    container_name: pdf_to_json_service
+    ports:
+      - "8090:8000" #<port where container listen>:<port where the app are in container>
 
   db:
     image: postgis/postgis
