@@ -35,7 +35,7 @@ def subjects_completed(lines, content_dict):
         if sub_[0] in semesters:
 
             subject["semester"] = sub_[0]
-            subject["cod"] = sub_[1]
+            subject["subject_code"] = sub_[1]
             subject["status"] = sub_[-1]
             subject["score"] = sub_[-2]
             subject["freq"] = sub_[-3]
@@ -62,19 +62,24 @@ def extract_information(content):
         if line[0:4] == "CPF:":
             content_dict["cpf"] = line[line.index("CPF:")+5:]
 
+        if line[0:7] == "Status:":
+            content_dict["score"] = line[line.index("IRA:")+5:]
+
+        if line[0:3] == "Ano" and line[19:27] == "Inicial:":
+            content_dict["init_semester"] = line[28:34]
+
         if line[0:6] == "Curso:":
             content_dict['course_name'] = line[line.index("Curso:")+7:]
-        
+
         if "Componentes Curriculares Cursados/Cursando" in line:
             subjects_completed(lines[i:], content_dict)
 
     return content_dict
 
-
 def pdf_to_json(pdf_file):
     images = pdf2image.convert_from_bytes(pdf_file.read(), fmt="jpeg")
     result_img = concat_imgs_v(images)
 
-    content = tess.image_to_string(result_img)
+    content = tess.image_to_string(result_img)  # type: ignore
 
     return extract_information(content)
