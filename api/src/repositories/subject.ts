@@ -1,9 +1,9 @@
-const { PrismaClient } = require("@prisma/client");
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 class SubjectRepository {
-  async findByCode(subject_code) {
+  async findByCode(subject_code: string) {
     const subject = await prisma.subject.findFirst({
       where: { subject_code: subject_code },
     });
@@ -15,12 +15,12 @@ class SubjectRepository {
     return subjects;
   }
 
-  async findById(subject_id) {
-    const subject = await prisma.subject.findUnique({where: {subject_id}})
+  async findById(id: number) {
+    const subject = await prisma.subject.findUnique({ where: { id } });
     return subject;
   }
 
-  async create(data) {
+  async create(data: any) {
     const subject = await prisma.subject.create({
       data: data,
     });
@@ -28,4 +28,4 @@ class SubjectRepository {
   }
 }
 
-module.exports = new SubjectRepository();
+export default new SubjectRepository();

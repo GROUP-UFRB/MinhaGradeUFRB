@@ -1,15 +1,15 @@
 class FindAllSubjectUseCase {
-  constructor(subjectRepository) {
+  constructor(private subjectRepository: any) {
     this.subjectRepository = subjectRepository;
   }
 
   async execute() {
     const subjects = await this.subjectRepository.findAll();
-    if (subjects == []) {
-        throw new Error('Subjects not found');
+    if (subjects.length === 0) {
+      throw new Error("Subjects not found");
     }
     return subjects;
   }
 }
 
-module.exports = FindAllSubjectUseCase;
+export default FindAllSubjectUseCase;

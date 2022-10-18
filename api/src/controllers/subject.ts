@@ -1,14 +1,17 @@
-const CreateSubjectUseCase = require("../useCases/subject/create");
-const FindAllSubjectUseCase = require("../useCases/subject/all");
-const FindByIdSubjectUseCase = require("../useCases/subject/index");
-const FindByCodeSubjectUseCase = require("../useCases/subject/code");
+import CreateSubjectUseCase from "../useCases/subject/create";
+import FindAllSubjectUseCase from "../useCases/subject/all";
+import FindByIdSubjectUseCase from "../useCases/subject/index";
+import FindByCodeSubjectUseCase from "../useCases/subject/code";
 
-const subjectRepository = require("../repositories/subject");
+import subjectRepository from "../repositories/subject";
+import centerRepository from "../repositories/center";
+import { Request, Response } from "express";
 
-const subjectController = {
-  async create(req, res) {
+export const subjectController = {
+  async create(req: Request, res: Response) {
     const createSubjectUseCaseCase = new CreateSubjectUseCase(
-      subjectRepository
+      subjectRepository,
+      centerRepository
     );
     try {
       const subject = await createSubjectUseCaseCase.execute(req.body);
@@ -19,24 +22,24 @@ const subjectController = {
         workload: subject.workload,
         cod_center: subject.cod_center,
       });
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 
-  async all(req, res) {
+  async all(req: Request, res: Response) {
     const findAllSubjectUseCaseCase = new FindAllSubjectUseCase(
       subjectRepository
     );
     try {
       const subjects = await findAllSubjectUseCaseCase.execute();
       return res.json(subjects);
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 
-  async index(req, res) {
+  async index(req: Request, res: Response) {
     const findByIdSubjectUseCaseCase = new FindByIdSubjectUseCase(
       subjectRepository
     );
@@ -44,12 +47,12 @@ const subjectController = {
       const { id } = req.params;
       const subject = await findByIdSubjectUseCaseCase.execute(parseInt(id));
       return res.json(subject);
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 
-  async code(req, res) {
+  async code(req: Request, res: Response) {
     const findByCodeSubjectUseCaseCase = new FindByCodeSubjectUseCase(
       subjectRepository
     );
@@ -57,10 +60,8 @@ const subjectController = {
       const { subject_code } = req.params;
       const subject = await findByCodeSubjectUseCaseCase.execute(subject_code);
       return res.json(subject);
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 };
-
-module.exports = subjectController;

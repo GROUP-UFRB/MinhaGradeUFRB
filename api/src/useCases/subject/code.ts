@@ -1,15 +1,15 @@
 class FindByCodeSubjectUseCase {
-  constructor(subjectRepository) {
+  constructor(private subjectRepository: any) {
     this.subjectRepository = subjectRepository;
   }
 
-  async execute(subject_code) {
+  async execute(subject_code: string) {
     const subject = await this.subjectRepository.findByCode(subject_code);
     if (!subject) {
-        throw new Error('Subject not found');
+      throw new Error("Subject not found");
     }
     return subject;
   }
 }
 
-module.exports = FindByCodeSubjectUseCase;
+export default FindByCodeSubjectUseCase;

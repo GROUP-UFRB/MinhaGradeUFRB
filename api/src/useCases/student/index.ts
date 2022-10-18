@@ -1,15 +1,15 @@
 class FindByIdStudentUseCase {
-  constructor(studentRepository) {
+  constructor(private studentRepository: any) {
     this.studentRepository = studentRepository;
   }
 
-  async execute(id) {
+  async execute(id: string) {
     const student = await this.studentRepository.findById(id);
     if (!student) {
-        throw new Error('Student not found');
+      throw new Error("Student not found");
     }
     return student;
   }
 }
 
-module.exports = FindByIdStudentUseCase;
+export default FindByIdStudentUseCase;

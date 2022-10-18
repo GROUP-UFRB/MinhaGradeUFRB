@@ -1,9 +1,7 @@
 class CreateCenterUseCase {
-  constructor(centerRepository) {
-    this.centerRepository = centerRepository;
-  }
+  constructor(private centerRepository: any) {}
 
-  async execute(data) {
+  async execute(data: any) {
     const { cod_center, name } = data;
     if (!name || !cod_center) {
       throw new Error("There is an empty field, please check and try again.");
@@ -14,10 +12,10 @@ class CreateCenterUseCase {
     }
     const center = await this.centerRepository.create({
       name,
-      cod_center
+      cod_center,
     });
     return center;
   }
 }
 
-module.exports = CreateCenterUseCase;
+export default CreateCenterUseCase;

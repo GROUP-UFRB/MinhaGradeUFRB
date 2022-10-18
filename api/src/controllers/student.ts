@@ -1,12 +1,13 @@
-const CreateStudentUseCase = require("../useCases/student/create");
-const FindAllStudentUseCase = require("../useCases/student/all");
-const FindByIdStudentUseCase = require("../useCases/student/index");
+import CreateStudentUseCase from "../useCases/student/create";
+import FindAllStudentUseCase from "../useCases/student/all";
+import FindByIdStudentUseCase from "../useCases/student";
 
-const studentRepository = require("../repositories/student");
-const peopleRepository = require("../repositories/people");
+import studentRepository from "../repositories/student";
+import peopleRepository from "../repositories/people";
+import { Request, Response } from "express";
 
-const studentController = {
-  async create(req, res) {
+export const studentController = {
+  async create(req: Request, res: Response) {
     const createStudentUseCaseCase = new CreateStudentUseCase(
       studentRepository,
       peopleRepository
@@ -21,36 +22,33 @@ const studentController = {
         init_semester: student.init_semester,
         course_id: student.course_id,
       });
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 
-  async all(req, res) {
+  async all(req: Request, res: Response) {
     const findAllStudentUseCaseCase = new FindAllStudentUseCase(
       studentRepository
     );
     try {
       const students = await findAllStudentUseCaseCase.execute();
       return res.json(students);
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 
-  async index(req, res) {
+  async index(req: Request, res: Response) {
     const findByIdStudentUseCaseCase = new FindByIdStudentUseCase(
       studentRepository
     );
     try {
       const { id } = req.params;
-      const student = await findByIdStudentUseCaseCase.execute(parseInt(id));
+      const student = await findByIdStudentUseCaseCase.execute(id);
       return res.json(student);
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
-
 };
-
-module.exports = studentController;

@@ -1,35 +1,32 @@
-const CreateCenterUseCase = require("../useCases/center/create");
-const FindAllCenterUseCase = require("../useCases/center/all");
-const FindByCodeCenterUseCase = require("../useCases/center/code");
+import CreateCenterUseCase from "../useCases/center/create";
+import FindAllCenterUseCase from "../useCases/center/all";
+import FindByCodeCenterUseCase from "../useCases/center/code";
 
-const centerRepository = require("../repositories/center");
+import centerRepository from "../repositories/center";
+import { Request, Response } from "express";
 
-const centerController = {
-  async create(req, res) {
-    const createCenterUseCaseCase = new CreateCenterUseCase(
-      centerRepository
-    );
+export const centerController = {
+  async create(req: Request, res: Response) {
+    const createCenterUseCaseCase = new CreateCenterUseCase(centerRepository);
     try {
       const center = await createCenterUseCaseCase.execute(req.body);
       return res.json(center);
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 
-  async all(req, res) {
-    const findAllCenterUseCaseCase = new FindAllCenterUseCase(
-      centerRepository
-    );
+  async all(req: Request, res: Response) {
+    const findAllCenterUseCaseCase = new FindAllCenterUseCase(centerRepository);
     try {
       const centers = await findAllCenterUseCaseCase.execute();
       return res.json(centers);
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 
-  async code(req, res) {
+  async code(req: Request, res: Response) {
     const findByCodeCenterUseCaseCase = new FindByCodeCenterUseCase(
       centerRepository
     );
@@ -37,10 +34,8 @@ const centerController = {
       const { cod_center } = req.params;
       const center = await findByCodeCenterUseCaseCase.execute(cod_center);
       return res.json(center);
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   },
 };
-
-module.exports = centerController;

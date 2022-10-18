@@ -1,11 +1,9 @@
-const createToken = require("../../utils/createToken");
+import createToken from "../../utils/createToken";
 
 class LoginUseCase {
-  constructor(peopleRepository) {
-    this.peopleRepository = peopleRepository;
-  }
+  constructor(private peopleRepository: any) {}
 
-  async execute(data) {
+  async execute(data: any) {
     const { email, password } = data;
     if (!email || !password) {
       throw new Error("There is an empty field, please check and try again.");
@@ -24,4 +22,4 @@ class LoginUseCase {
   }
 }
 
-module.exports = LoginUseCase;
+export default LoginUseCase;

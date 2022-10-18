@@ -1,9 +1,9 @@
-const { PrismaClient } = require("@prisma/client");
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 class CenterRepository {
-  async findByCode(cod_center) {
+  async findByCode(cod_center: string) {
     const center = await prisma.center.findFirst({
       where: { cod_center: cod_center },
     });
@@ -15,7 +15,7 @@ class CenterRepository {
     return centers;
   }
 
-  async create(data) {
+  async create(data: any) {
     const center = await prisma.center.create({
       data: data,
     });
@@ -23,4 +23,4 @@ class CenterRepository {
   }
 }
 
-module.exports = new CenterRepository();
+export default new CenterRepository();
