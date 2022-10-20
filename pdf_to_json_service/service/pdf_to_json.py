@@ -80,6 +80,6 @@ def pdf_to_json(pdf_file):
     images = pdf2image.convert_from_bytes(pdf_file.read(), fmt="jpeg")
     result_img = concat_imgs_v(images)
 
-    content = tess.image_to_string(result_img)  # type: ignore
+    content = tess.image_to_string(result_img, config = "--oem 3 --psm 6")  # type: ignore
 
     return extract_information(content)
